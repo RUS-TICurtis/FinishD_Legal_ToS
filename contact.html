@@ -7,7 +7,12 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind-config.js"></script>
     <script>
-        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const iconPath = document.getElementById('menu-icon-path');
+            const isHidden = menu.classList.toggle('hidden');
+            iconPath.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
+        }
         function handleFiles(files) {
             const label = document.getElementById('file-label');
             if (files[0].size > 10 * 1024 * 1024) {
@@ -34,7 +39,11 @@
                 <a href="contact.html" class="font-bold">Contact</a>
                 <a href="guidelines.html" class="hover:underline">Guidelines</a>
             </div>
-            <button class="md:hidden text-black" onclick="toggleMenu()">Menu</button>
+            <button class="md:hidden text-black focus:outline-none" onclick="toggleMenu()" aria-label="Toggle Menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path id="menu-icon-path" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
         <div id="mobile-menu" class="hidden flex flex-col p-4 space-y-2 bg-mint-400">
             <a href="index.html">Help Center</a>
