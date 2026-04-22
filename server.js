@@ -1,0 +1,42 @@
+const express = require('express');
+const helmet = require('helmet');
+const cors = require('cors');
+const rateLimit = require('express-rate-limit');
+const path = require('path');
+
+const app = express();
+
+// 1. Security Headers (Helmet)
+// Configured to allow Tailwind CDN and the inline configuration script found in your HTML
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        ...helmet.contentSecurityPolicy.getDefaultDirectives(),
+        "script-src": ["'self'", "https://cdn.tailwindcss.com", "'unsafe-inline'"],
+      },
+    },
+  })
+);
+
+// 2. Cross-Origin Resource Sharing
+app.use(cors());
+
+// 3. Body Parsing
+app.use(express.json());
+
+// 4. Rate Limiting (Protection against brute-force/DDoS)
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // Limit each IP to 100 requests per window
+  message: 'Too many requests from this IP, please try again later.'
+});
+app.use(limiter);
+
+// Serve static portal files
+app.use(express.static(path.join(__dirname)));
+
+const PORT = process.env.PORT || 2230;
+app.listen(PORT, () => {
+  console.log(`FinishD Support Portal running at http://localhost:${PORT}`);
+});

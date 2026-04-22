@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | FinishD</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = { theme: { extend: { colors: { indigo: { 900: '#1e1b4b' }, mint: { 400: '#4ade80' } } } } }
+    </script>
+</head>
+<body class="bg-gray-50 text-indigo-900">
+    <nav class="bg-indigo-900 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold tracking-tighter">Finish<span class="text-mint-400">D</span></a>
+            <div class="space-x-6">
+                <a href="index.html" class="hover:text-mint-400">Help Center</a>
+                <a href="contact.html" class="text-mint-400">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto py-16 px-4">
+        <div class="max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-xl">
+            <h1 class="text-3xl font-bold mb-2 text-center">Contact Support</h1>
+            <p class="text-gray-500 text-center mb-8">Expect a response within 24-48 hours.</p>
+
+            <form action="#" class="space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Full Name</label>
+                        <input type="text" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-mint-400 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-bold mb-2">Email Address</label>
+                        <input type="email" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-mint-400 outline-none" required>
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-2">Subject</label>
+                    <select class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-mint-400 outline-none appearance-none">
+                        <option>Account Recovery</option>
+                        <option>Technical Support</option>
+                        <option>Feature Request</option>
+                        <option>Report a Bug</option>
+                        <option>Other</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-bold mb-2">Message</label>
+                    <textarea rows="5" class="w-full p-3 border rounded-lg focus:ring-2 focus:ring-mint-400 outline-none" placeholder="Tell us what's going on..."></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-indigo-900 text-white font-bold py-4 rounded-lg hover:bg-indigo-950 transition duration-200">
+                    Send Message
+                </button>
+            </form>
+        </div>
+    </main>
+</body>
+</html>
