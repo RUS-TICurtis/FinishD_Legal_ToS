@@ -3,12 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy | FinishD</title>
+    <title>Community Guidelines | FinishD</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind-config.js"></script>
-    <script>
-        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
-    </script>
+    <script>function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }</script>
     <style>
     .logoimg {
             align-self: center;
@@ -23,47 +21,45 @@
             <a href="index.html" class="text-2xl font-bold tracking-tighter"><img src="Finishdlogo.png" class="logoimg" alt=""></a>
             <div class="hidden md:flex space-x-6">
                 <a href="index.html" class="hover:underline">Help Center</a>
-                <a href="guidelines.html" class="hover:underline">Guidelines</a>
-                <a href="privacy.html" class="font-bold">Privacy</a>
+                <a href="guidelines.html" class="font-bold">Guidelines</a>
+                <a href="contact.html" class="hover:underline">Contact</a>
             </div>
             <button class="md:hidden text-black" onclick="toggleMenu()">Menu</button>
-        </div>
-        <div id="mobile-menu" class="hidden flex flex-col p-4 space-y-2 bg-mint-400">
-            <a href="index.html">Help Center</a>
-            <a href="contact.html">Contact</a>
-            <a href="terms.html">Terms</a>
-            <a href="privacy.html">Privacy</a>
         </div>
     </nav>
 
     <main class="container mx-auto py-12 px-4 max-w-4xl flex-grow">
-        <div class="bg-white p-10 rounded-2xl shadow-sm text-black border-l-8 border-mint-400">
-            <div class="mb-10 bg-mint-50 border-l-4 border-mint-400 p-6 rounded-r-lg">
-                <h3 class="font-bold text-black uppercase tracking-widest text-sm mb-2">TL;DR Summary</h3>
-                <ul class="text-sm space-y-2 text-black">
-                    <li>• We only collect what's necessary (email, username, milestones).</li>
-                    <li>• Data from "Contact Us" (including screenshots) is used for support only.</li>
-                    <li>• We are GDPR/CCPA compliant. You control your data.</li>
-                </ul>
-            </div>
+        <div class="bg-white p-10 rounded-2xl shadow-sm border-l-8 border-mint-400">
+            <h1 class="text-4xl font-bold mb-4">The FinishD Way</h1>
+            <p class="text-black mb-10 opacity-70">Our guidelines ensure everyone has a supportive environment to achieve their goals.</p>
 
-            <h1 class="text-4xl font-bold mb-8">Privacy Policy</h1>
-            
-            <div class="space-y-8 max-w-[800px]">
+            <div class="space-y-12 max-w-[800px]">
                 <section>
-                    <h2 class="text-xl font-bold mb-2">GDPR & CCPA Compliance</h2>
-                    <p class="text-black leading-relaxed">We respect international data standards. Under GDPR (EU) and CCPA (California), you have the right to access, delete, or port your data. We collect minimal info: email, username, and usage milestones.</p>
+                    <h2 class="text-2xl font-bold mb-4 text-green-700 underline decoration-mint-400">✓ Encouraged Behavior</h2>
+                    <ul class="list-disc ml-5 space-y-3 text-black">
+                        <li><strong>Goal-Setting:</strong> Share your journey and milestones openly.</li>
+                        <li><strong>Mutual Support:</strong> Celebrate the "Finished" status of your peers.</li>
+                        <li><strong>Authenticity:</strong> Share real progress, including the struggles along the way.</li>
+                    </ul>
                 </section>
 
                 <section>
-                    <h2 class="text-xl font-bold mb-2">Data Collection</h2>
-                    <p class="text-black leading-relaxed">We collect data from form submissions and device metadata to improve app performance. We do not sell your personal data to third parties.</p>
+                    <h2 class="text-2xl font-bold mb-4 text-red-600 underline decoration-red-200">✗ Prohibited Content</h2>
+                    <ul class="list-disc ml-5 space-y-3 text-black">
+                        <li><strong>Harassment & Bullying:</strong> We have zero tolerance for targeted abuse.</li>
+                        <li><strong>Hate Speech:</strong> Any content attacking individuals based on race, religion, or identity.</li>
+                        <li><strong>Misinformation:</strong> Sharing fake achievements or misleading health/productivity advice.</li>
+                        <li><strong>Illegal Acts:</strong> Promoting or sharing any unlawful activities.</li>
+                    </ul>
                 </section>
 
-                <section>
-                    <h2 class="text-xl font-bold mb-2">Contact for Data Requests</h2>
-                    <p class="text-black">Please send all privacy-related inquiries to <span class="font-mono bg-mint-100 px-2">privacy@finishd.app</span>.</p>
-                </section>
+                <div class="bg-black text-white p-8 rounded-xl flex flex-col md:flex-row items-center justify-between border-b-8 border-mint-400">
+                    <div class="mb-4 md:mb-0">
+                        <h3 class="text-xl font-bold">See something wrong?</h3>
+                        <p class="text-mint-400">Help us keep the community safe.</p>
+                    </div>
+                    <a href="contact.html" class="bg-mint-400 text-black px-6 py-3 rounded-lg font-bold hover:bg-white transition">Report a Violation</a>
+                </div>
             </div>
         </div>
     </main>

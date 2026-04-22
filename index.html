@@ -5,110 +5,122 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Center | FinishD</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="tailwind-config.js"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        indigo: { 900: '#1e1b4b', 950: '#0f172a' },
-                        mint: { 400: '#4ade80' }
-                    }
-                }
-            }
+        function toggleMenu() { document.getElementById('mobile-menu').classList.toggle('hidden'); }
+        function toggleFaq(id) { 
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            content.classList.toggle('hidden');
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
         }
     </script>
+    <style>
+        @keyframes pulse-bg {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .animated-hero-banner {
+            background: linear-gradient(270deg, #000000, #0ea80e, #000000);
+            background-size: 200% 200%;
+            animation: pulse-bg 12s ease infinite;
+        }
+        .faq-item { border-bottom: 1px solid #4ade80; }
+        
+        .logoimg {
+            align-self: center;
+            height: 50px;
+            width: 150px;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-indigo-900 flex flex-col min-h-screen">
+<body class="bg-white text-black flex flex-col min-h-screen">
     <!-- Navbar -->
-    <nav class="bg-indigo-900 text-white p-4 sticky top-0 z-50">
+    <nav class="bg-mint-400 text-black p-4 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold tracking-tighter">Finish<span class="text-mint-400">D</span></a>
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html" class="hover:text-mint-400">Help Center</a>
-                <a href="contact.html" class="hover:text-mint-400">Contact</a>
-                <a href="terms.html" class="hover:text-mint-400">Terms</a>
+            <a href="index.html" class="text-2xl font-bold tracking-tighter"><img src="Finishdlogo.png" class="logoimg" alt=""></a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="hover:underline font-medium">Help Center</a>
+                <a href="guidelines.html" class="hover:underline font-medium">Guidelines</a>
+                <a href="contact.html" class="hover:underline font-medium">Contact Us</a>
+                <a href="https://play.google.com/apps" class="bg-black text-white px-4 py-2 rounded-lg font-bold hover:bg-gray-800 transition">Download App</a>
             </div>
-            <button class="md:hidden text-mint-400" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">Menu</button>
+            <button class="md:hidden text-black" onclick="toggleMenu()">Menu</button>
         </div>
-        <div id="mobile-menu" class="hidden flex flex-col p-4 space-y-2 bg-indigo-950">
+        <div id="mobile-menu" class="hidden flex flex-col p-4 space-y-2 bg-mint-500">
             <a href="index.html">Help Center</a>
-            <a href="contact.html">Contact</a>
-            <a href="terms.html">Terms</a>
-            <a href="privacy.html">Privacy</a>
+            <a href="guidelines.html">Guidelines</a>
+            <a href="contact.html">Contact Us</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header class="bg-indigo-900 text-white py-16 px-4">
+    <header class="animated-hero-banner text-white py-20 px-4">
         <div class="container mx-auto text-center">
             <h1 class="text-4xl font-bold mb-6">How can we help you cross the finish line?</h1>
             <div class="max-w-2xl mx-auto relative">
-                <input type="text" placeholder="Search for articles (e.g., account recovery)..." class="w-full p-4 rounded-lg text-indigo-900 focus:ring-2 focus:ring-mint-400 outline-none">
-                <button class="absolute right-3 top-3 bg-indigo-900 text-mint-400 px-4 py-1 rounded">Search</button>
+                <input type="text" placeholder="Search for articles..." class="w-full p-4 rounded-lg text-black focus:ring-2 focus:ring-mint-400 outline-none">
+                <button class="absolute right-3 top-3 bg-mint-400 text-black px-4 py-1 rounded hover:bg-mint-500 transition">Search</button>
             </div>
         </div>
     </header>
 
-    <!-- Categories -->
-    <main class="container mx-auto py-12 px-4 flex-grow">
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-mint-400">
-                <h2 class="text-xl font-bold mb-4">Getting Started</h2>
-                <ul class="space-y-3 text-gray-600">
-                    <li><a href="#" class="hover:text-indigo-900">Creating your first milestone</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">Understanding 'Finished' status</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">Profile customization</a></li>
-                </ul>
+    <main class="container mx-auto py-12 px-4 max-w-4xl flex-grow">
+        <div class="space-y-4">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            
+            <div class="faq-item bg-white rounded-lg shadow-sm border border-mint-400">
+                <button onclick="toggleFaq('faq1')" class="w-full p-6 text-left flex justify-between items-center font-bold">
+                    <span>How do I recover my account?</span>
+                    <span id="icon-faq1" class="transition-transform text-mint-600">▼</span>
+                </button>
+                <div id="faq1" class="hidden p-6 pt-0 text-black">
+                    Go to the login screen, select "Forgot Password," and follow the prompts sent to your registered email or phone number.
+                </div>
             </div>
-            <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-mint-400">
-                <h2 class="text-xl font-bold mb-4">Account Security</h2>
-                <ul class="space-y-3 text-gray-600">
-                    <li><a href="#" class="hover:text-indigo-900">Resetting your password</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">Two-factor authentication</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">Reporting unauthorized access</a></li>
-                </ul>
-            </div>
-            <div class="bg-white p-8 rounded-xl shadow-sm border-t-4 border-mint-400">
-                <h2 class="text-xl font-bold mb-4">App Features</h2>
-                <ul class="space-y-3 text-gray-600">
-                    <li><a href="#" class="hover:text-indigo-900">Community badges</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">UGC Guidelines</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">Privacy settings</a></li>
-                </ul>
+
+            <div class="faq-item bg-white rounded-lg shadow-sm border border-mint-400">
+                <button onclick="toggleFaq('faq2')" class="w-full p-6 text-left flex justify-between items-center font-bold">
+                    <span>What are badges and can I spend them?</span>
+                    <span id="icon-faq2" class="transition-transform text-mint-600">▼</span>
+                </button>
+                <div id="faq2" class="hidden p-6 pt-0 text-black">
+                    Badges are digital rewards for achieving your goals. Per our Terms, these have no real-world monetary value and cannot be redeemed for cash.
+                </div>
             </div>
         </div>
     </main>
 
-    <!-- Global Footer -->
-    <footer class="bg-white border-t border-gray-200 pt-12 pb-6">
+    <footer class="bg-black text-white pt-12 pb-6 border-t-8 border-mint-400">
         <div class="container mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
                 <h3 class="font-bold mb-4 uppercase text-xs tracking-widest">Company</h3>
-                <ul class="text-gray-500 space-y-2">
-                    <li><a href="#" class="hover:text-indigo-900">About FinishD</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">Careers</a></li>
+                <ul class="text-mint-400 space-y-2">
+                    <li><a href="#" class="hover:text-white transition">About FinishD</a></li>
+                    <li><a href="#" class="hover:text-white transition">Careers</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="font-bold mb-4 uppercase text-xs tracking-widest">Support</h3>
-                <ul class="text-gray-500 space-y-2">
-                    <li><a href="index.html" class="hover:text-indigo-900">Help Center</a></li>
-                    <li><a href="contact.html" class="hover:text-indigo-900">Contact Us</a></li>
+                <ul class="text-mint-400 space-y-2">
+                    <li><a href="index.html" class="hover:text-white transition">Help Center</a></li>
+                    <li><a href="contact.html" class="hover:text-white transition">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white transition font-bold">● System Status</a></li>
                 </ul>
             </div>
             <div>
                 <h3 class="font-bold mb-4 uppercase text-xs tracking-widest">Legal</h3>
-                <ul class="text-gray-500 space-y-2">
-                    <li><a href="terms.html" class="hover:text-indigo-900">Terms of Service</a></li>
-                    <li><a href="privacy.html" class="hover:text-indigo-900">Privacy Policy</a></li>
-                    <li><a href="#" class="hover:text-indigo-900">Cookie Policy</a></li>
+                <ul class="text-mint-400 space-y-2">
+                    <li><a href="terms.html" class="hover:text-white transition">Terms of Service</a></li>
+                    <li><a href="privacy.html" class="hover:text-white transition">Privacy Policy</a></li>
+                    <li><a href="guidelines.html" class="hover:text-white transition">Community Guidelines</a></li>
                 </ul>
             </div>
         </div>
-        <div class="container mx-auto px-4 border-t border-gray-100 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
-            <p>&copy; 2026 FinishD. All rights reserved. <span class="ml-4 text-green-500 font-medium">● System Status: Operational</span></p>
+        <div class="container mx-auto px-4 border-t border-gray-800 pt-6 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
+            <p>&copy; 2026 FinishD. All rights reserved.</p>
             <div class="flex space-x-4 mt-4 md:mt-0">
-                <a href="#">Twitter</a><a href="#">Instagram</a><a href="#">LinkedIn</a>
+                <a href="#" class="hover:text-mint-400">Twitter</a><a href="#" class="hover:text-mint-400">Instagram</a><a href="#" class="hover:text-mint-400">LinkedIn</a>
             </div>
         </div>
     </footer>
