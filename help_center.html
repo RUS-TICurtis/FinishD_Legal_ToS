@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Community Guidelines | FinishD</title>
+    <title>Help Center | FinishD</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind-config.js"></script>
     <script>
@@ -13,23 +13,43 @@
             const isHidden = menu.classList.toggle('hidden');
             iconPath.setAttribute('d', isHidden ? 'M4 6h16M4 12h16M4 18h16' : 'M6 18L18 6M6 6l12 12');
         }
+        function toggleFaq(id) { 
+            const content = document.getElementById(id);
+            const icon = document.getElementById('icon-' + id);
+            content.classList.toggle('hidden');
+            icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+        }
     </script>
     <style>
-    .logoimg {
+        @keyframes pulse-bg {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        .animated-hero-banner {
+            background: linear-gradient(270deg, #000000, #0ea80e, #000000);
+            background-size: 200% 200%;
+            animation: pulse-bg 12s ease infinite;
+        }
+        .faq-item { border-bottom: 1px solid #4ade80; }
+        
+        .logoimg {
             align-self: center;
             height: 50px;
             width: 150px;
         }
+        
     </style>
 </head>
 <body class="bg-white text-black flex flex-col min-h-screen">
+    <!-- Navbar -->
     <nav class="bg-mint-400 text-black p-4 sticky top-0 z-50 shadow-md">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold tracking-tighter"><img src="Finishdlogo.png" class="logoimg" alt=""></a>
-            <div class="hidden md:flex space-x-6">
-                <a href="index.html" class="hover:underline">Help Center</a>
-                <a href="guidelines.html" class="font-bold">Guidelines</a>
-                <a href="contact.html" class="hover:underline">Contact</a>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="index.html" class="hover:underline font-medium">Help Center</a>
+                <a href="guidelines.html" class="hover:underline font-medium">Guidelines</a>
+                <a href="contact.html" class="hover:underline font-medium">Contact Us</a>
+                <a href="https://play.google.com/apps" class="bg-black text-white px-4 py-2 rounded-lg font-bold hover:bg-gray-800 transition">Download App</a>
             </div>
             <button class="md:hidden text-black focus:outline-none" onclick="toggleMenu()" aria-label="Toggle Menu">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -37,41 +57,45 @@
                 </svg>
             </button>
         </div>
+        <div id="mobile-menu" class="hidden flex flex-col p-4 space-y-2 bg-mint-500">
+            <a href="index.html">Help Center</a>
+            <a href="guidelines.html">Guidelines</a>
+            <a href="contact.html">Contact Us</a>
+        </div>
     </nav>
 
+    <!-- Hero Section -->
+    <header class="animated-hero-banner text-white py-20 px-4">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-6">How can we help you cross the finish line?</h1>
+            <div class="max-w-2xl mx-auto relative">
+                <input type="text" placeholder="Search for articles..." class="w-full p-4 rounded-lg text-black focus:ring-2 focus:ring-mint-400 outline-none">
+                <button class="absolute right-3 top-3 bg-mint-400 text-black px-4 py-1 rounded hover:bg-mint-500 transition">Search</button>
+            </div>
+        </div>
+    </header>
+
     <main class="container mx-auto py-12 px-4 max-w-4xl flex-grow">
-        <div class="bg-white p-10 rounded-3xl shadow-sm border border-gray-100">
-            <div class="border-l-8 border-mint-400 pl-6 mb-10">
-                <h1 class="text-4xl font-bold mb-2">Community Guidelines</h1>
-                <p class="text-gray-600 italic">Ensuring a supportive environment for every finisher.</p>
+        <div class="space-y-4">
+            <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+            
+            <div class="faq-item bg-white rounded-lg shadow-sm border border-mint-400">
+                <button onclick="toggleFaq('faq1')" class="w-full p-6 text-left flex justify-between items-center font-bold">
+                    <span>How do I recover my account?</span>
+                    <span id="icon-faq1" class="transition-transform text-mint-600">▼</span>
+                </button>
+                <div id="faq1" class="hidden p-6 pt-0 text-black">
+                    Go to the login screen, select "Forgot Password," and follow the prompts sent to your registered email or phone number.
+                </div>
             </div>
 
-            <div class="space-y-12">
-                <section>
-                    <h2 class="text-2xl font-bold mb-4 flex items-center"><span class="mr-2 text-mint-500">✓</span> Encouraged Behavior</h2>
-                    <ul class="list-disc ml-5 space-y-3 text-black">
-                        <li><strong>Goal-Setting:</strong> Share your journey and milestones openly.</li>
-                        <li><strong>Mutual Support:</strong> Celebrate the "Finished" status of your peers.</li>
-                        <li><strong>Authenticity:</strong> Share real progress, including the struggles along the way.</li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2 class="text-2xl font-bold mb-4 text-red-600 underline decoration-red-200">✗ Prohibited Content</h2>
-                    <ul class="list-disc ml-5 space-y-3 text-black">
-                        <li><strong>Harassment & Bullying:</strong> We have zero tolerance for targeted abuse.</li>
-                        <li><strong>Hate Speech:</strong> Any content attacking individuals based on race, religion, or identity.</li>
-                        <li><strong>Misinformation:</strong> Sharing fake achievements or misleading health/productivity advice.</li>
-                        <li><strong>Illegal Acts:</strong> Promoting or sharing any unlawful activities.</li>
-                    </ul>
-                </section>
-
-                <div class="bg-black text-white p-8 rounded-xl flex flex-col md:flex-row items-center justify-between border-b-8 border-mint-400">
-                    <div class="mb-4 md:mb-0">
-                        <h3 class="text-xl font-bold">See something wrong?</h3>
-                        <p class="text-mint-400">Help us keep the community safe.</p>
-                    </div>
-                    <a href="contact.html" class="bg-mint-400 text-black px-6 py-3 rounded-lg font-bold hover:bg-white transition">Report a Violation</a>
+            <div class="faq-item bg-white rounded-lg shadow-sm border border-mint-400">
+                <button onclick="toggleFaq('faq2')" class="w-full p-6 text-left flex justify-between items-center font-bold">
+                    <span>What are badges and can I spend them?</span>
+                    <span id="icon-faq2" class="transition-transform text-mint-600">▼</span>
+                </button>
+                <div id="faq2" class="hidden p-6 pt-0 text-black">
+                    Badges are digital rewards for achieving your goals. Per our Terms, these have no real-world monetary value and cannot be redeemed for cash.
                 </div>
             </div>
         </div>
