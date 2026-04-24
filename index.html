@@ -113,11 +113,49 @@
         .hero-glow {
             background: radial-gradient(circle at center, rgba(34, 197, 94, 0.2) 0%, transparent 70%);
         }
+    
+        .modal-overlay {
+            backdrop-filter: blur(20px);
+            background-color: rgba(19, 19, 20, 0.95);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+            pointer-events: none;
+            visibility: hidden;
+        }
+        .modal-overlay.active {
+            opacity: 1;
+            pointer-events: auto;
+            visibility: visible;
+        }
+        .modal-content {
+            transform: translateY(20px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            opacity: 0;
+        }
+        .modal-overlay.active .modal-content {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .faq-item { border-bottom: 1px solid rgba(74, 222, 128, 0.2); }
+        .animated-hero-banner {
+            background: linear-gradient(270deg, #000000, #16a34a, #000000);
+            background-size: 200% 200%;
+            animation: pulse-bg 12s ease infinite;
+        }
+        @keyframes pulse-bg {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
     </style>
 <style>
     body {
       min-height: max(884px, 100dvh);
     }
+    .logoimg {
+            align-self: center;
+            height: 50px;
+            width: 150px;
+        }
   </style>
   </head>
 <body class="bg-surface text-on-surface font-body-md mesh-gradient min-h-screen selection:bg-primary-container selection:text-white">
@@ -125,14 +163,15 @@
 <header class="fixed top-0 w-full z-50 border-b border-white/15 bg-black/40 backdrop-blur-[30px] shadow-[0_0_20px_rgba(191,0,255,0.15)]">
 <div class="max-w-[1440px] mx-auto px-8 py-4 flex justify-between items-center w-full">
 <div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-mint-500 dark:text-mint-400" style="font-variation-settings: 'FILL' 1;">bolt</span>
-<h1 class="text-2xl font-black text-white italic tracking-tighter">FinishD</h1>
+  <a href="index.html" class="text-2xl font-bold tracking-tighter"><img src="Finishdlogo.png" class="logoimg" alt=""></a>
+<!-- <span class="material-symbols-outlined text-mint-500 dark:text-mint-400" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<h1 class="text-2xl font-black text-white italic tracking-tighter">FinishD</h1> -->
 </div>
 <nav class="hidden md:flex items-center gap-8">
-<a class="font-label-bold text-mint-400 font-bold border-b-2 border-mint-400 py-1" href="index.html">Home</a>
-<a class="font-label-bold text-white/70 hover:bg-white/10 hover:text-white transition-all duration-300 px-3 py-1 rounded-lg" href="help_center.html">Help Center</a>
-<a class="font-label-bold text-white/70 hover:bg-white/10 hover:text-white transition-all duration-300 px-3 py-1 rounded-lg" href="guidelines.html">Guidelines</a>
-<a class="font-label-bold text-white/70 hover:bg-white/10 hover:text-white transition-all duration-300 px-3 py-1 rounded-lg" href="contact.html">Contact Us</a>
+<a class="font-label-bold text-mint-400 font-bold border-b-2 border-mint-400 py-1" href="#">Home</a>
+<a class="font-label-bold text-white/70 hover:bg-white/10 hover:text-white transition-all duration-300 px-3 py-1 rounded-lg" href="#help">Help Center</a>
+<a class="font-label-bold text-white/70 hover:bg-white/10 hover:text-white transition-all duration-300 px-3 py-1 rounded-lg" href="#guidelines">Guidelines</a>
+<a class="font-label-bold text-white/70 hover:bg-white/10 hover:text-white transition-all duration-300 px-3 py-1 rounded-lg" href="#contact">Contact Us</a>
 </nav>
 <button class="bg-primary-container text-white px-6 py-2 rounded-full font-label-bold hover:opacity-90 active:scale-95 duration-200 transition-transform">Get App</button>
 </div>
@@ -398,15 +437,16 @@
 <footer class="w-full border-t border-white/10 pt-16 pb-8 bg-black">
 <div class="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
 <div class="flex flex-col gap-4">
-<h2 class="font-black text-mint-400 text-2xl italic tracking-tighter">FinishD</h2>
+  <a href="index.html" class="text-2xl font-bold tracking-tighter"><img src="Finishdlogo.png" class="logoimg" alt=""></a>
+<!-- <h2 class="font-black text-mint-400 text-2xl italic tracking-tighter">FinishD</h2> -->
 <p class="font-['Inter'] text-sm tracking-wide text-white/40">© 2024 FinishD. Built for the fast.</p>
 </div>
 <div class="flex flex-wrap justify-center gap-8">
 <a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="https://play.google.com/apps">Download Now</a>
-<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="privacy.html">Privacy</a>
-<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="terms.html">Terms</a>
-<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="guidelines.html">Guidelines</a>
-<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="contact.html">Contact Us</a>
+<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#privacy">Privacy</a>
+<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#terms">Terms of Use</a>
+<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#guidelines">Guidelines</a>
+<a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#contact">Contact Us</a>
 </div>
 <div class="flex gap-6">
 <span class="material-symbols-outlined text-white/40 hover:text-white cursor-pointer transition-colors">public</span>
@@ -415,4 +455,370 @@
 </div>
 </div>
 </footer>
-</body></html>
+
+<!-- Modal Component -->
+<div id="screenModal" class="modal-overlay fixed inset-0 z-[100] flex items-center justify-center">
+    <div class="modal-content w-full h-full overflow-y-auto relative bg-background/95 flex flex-col">
+        <!-- Modal Header -->
+        <div class="w-full border-b border-white/5 sticky top-0 bg-background/80 backdrop-blur-2xl z-20">
+            <div class="max-w-[1440px] mx-auto px-8 py-6 flex justify-between items-center">
+                <a href="#" class="text-2xl font-bold tracking-tighter"><img src="Finishdlogo.png" class="logoimg" alt=""></a>
+            </div>
+        </div>
+        <!-- Modal Body -->
+        <div id="modalBody" class="w-full max-w-[1440px] mx-auto p-8 md:p-20 flex-grow">
+            <!-- Content injected here -->
+        </div>
+        
+        <!-- Modal Footer -->
+        <footer class="px-8 py-12 border-t border-white/5 bg-background/50">
+            <div class="max-w-[1440px] mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+                <div class="flex flex-col items-center md:items-start gap-4">
+                    <img src="Finishdlogo.png" class="logoimg opacity-50 grayscale" alt="">
+                    <p class="font-['Inter'] text-sm tracking-wide text-white/40">© 2026 FinishD. Cross your finish line.</p>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8">
+                    <a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="https://play.google.com/apps">Download Now</a>
+                    <a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#privacy">Privacy</a>
+                    <a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#terms">Terms of Use</a>
+                    <a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#guidelines">Guidelines</a>
+                    <a class="font-['Inter'] text-sm tracking-wide text-white/40 hover:text-mint-400 transition-colors duration-300" href="#contact">Contact Us</a>
+                </div>
+                <div class="flex gap-6">
+                    <span class="material-symbols-outlined text-white/40 hover:text-white cursor-pointer transition-colors">public</span>
+                    <span class="material-symbols-outlined text-white/40 hover:text-white cursor-pointer transition-colors">favorite</span>
+                    <span class="material-symbols-outlined text-white/40 hover:text-white cursor-pointer transition-colors">share</span>
+                </div>
+            </div>
+        </footer>
+    </div>
+</div>
+
+<script>
+    const pageContent = {
+        help: `
+            <div class="max-w-4xl mx-auto">
+                <header class="animated-hero-banner text-white py-16 px-8 rounded-[2rem] mb-16 shadow-2xl">
+                    <div class="text-center">
+                        <h1 class="text-5xl font-black mb-8 tracking-tight">How can we help you?</h1>
+                        <div class="max-w-xl mx-auto relative group">
+                            <input type="text" placeholder="Search for answers..." class="w-full p-5 rounded-2xl bg-white text-black focus:ring-4 focus:ring-mint-400/20 outline-none transition-all shadow-xl">
+                            <button class="absolute right-3 top-3 bg-mint-600 text-white px-6 py-2 rounded-xl hover:bg-mint-700 transition shadow-lg font-bold">Search</button>
+                        </div>
+                    </div>
+                </header>
+                <div class="space-y-6">
+                    <h2 class="text-3xl font-bold mb-8 text-white/90">Frequently Asked Questions</h2>
+                    <div class="faq-item bg-white/5 rounded-2xl border border-white/10 hover:border-mint-400/30 transition-colors">
+                        <button onclick="toggleFaq('faq1')" class="w-full p-8 text-left flex justify-between items-center font-bold">
+                            <span class="text-lg">How do I recover my account?</span>
+                            <span id="icon-faq1" class="transition-transform text-mint-400 material-symbols-outlined">expand_more</span>
+                        </button>
+                        <div id="faq1" class="hidden px-8 pb-8 text-on-surface-variant text-lg leading-relaxed">
+                            Go to the login screen, select "Forgot Password," and follow the prompts sent to your registered email or phone number.
+                        </div>
+                    </div>
+                    <div class="faq-item bg-white/5 rounded-2xl border border-white/10 hover:border-mint-400/30 transition-colors">
+                        <button onclick="toggleFaq('faq2')" class="w-full p-8 text-left flex justify-between items-center font-bold">
+                            <span class="text-lg">What are badges and can I spend them?</span>
+                            <span id="icon-faq2" class="transition-transform text-mint-400 material-symbols-outlined">expand_more</span>
+                        </button>
+                        <div id="faq2" class="hidden px-8 pb-8 text-on-surface-variant text-lg leading-relaxed">
+                            Badges are digital rewards for achieving your goals. Per our Terms, these have no real-world monetary value and cannot be redeemed for cash.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `,
+        guidelines: `
+            <div class="max-w-4xl mx-auto">
+                <div class="border-l-4 border-mint-500 pl-8 mb-16">
+                    <h1 class="text-5xl font-black mb-4 tracking-tight">Community Guidelines</h1>
+                    <p class="text-xl text-on-surface-variant font-medium">Ensuring a supportive and safe environment for every movie enthusiast.</p>
+                </div>
+                
+                <div class="space-y-16">
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">Our Core Principles</h2>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="font-bold text-mint-400 mb-2">Support</h3>
+                                <p class="text-sm text-on-surface-variant">We celebrate every "finished" status. Be the fan you'd want to have.</p>
+                            </div>
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="font-bold text-mint-400 mb-2">Authenticity</h3>
+                                <p class="text-sm text-on-surface-variant">Share your real watch history and honest opinions. No bots, no fakes.</p>
+                            </div>
+                            <div class="glass-card p-8 rounded-3xl">
+                                <h3 class="font-bold text-mint-400 mb-2">Safety</h3>
+                                <p class="text-sm text-on-surface-variant">Your space to discuss film should be free from fear and harassment.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                        <div class="glass-card p-10 rounded-[2.5rem]">
+                            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-mint-400">
+                                <span class="material-symbols-outlined">check_circle</span> Pro-Finish Behavior
+                            </h2>
+                            <ul class="space-y-5 text-lg">
+                                <li class="flex gap-3"><span class="text-mint-400">•</span> <strong>Constructive Criticism:</strong> Disagreeing on a movie is fine; attacking the person is not.</li>
+                                <li class="flex gap-3"><span class="text-mint-400">•</span> <strong>Original Content:</strong> Share your own clips and edits.</li>
+                                <li class="flex gap-3"><span class="text-mint-400">•</span> <strong>Community Care:</strong> Report bugs and abusive behavior promptly.</li>
+                            </ul>
+                        </div>
+                        <div class="glass-card p-10 rounded-[2.5rem] border-red-500/20">
+                            <h2 class="text-2xl font-bold mb-6 flex items-center gap-3 text-red-400">
+                                <span class="material-symbols-outlined">cancel</span> Zero Tolerance
+                            </h2>
+                            <ul class="space-y-5 text-lg">
+                                <li class="flex gap-3"><span class="text-red-400">•</span> <strong>Hate Speech:</strong> Any attack based on identity is an instant ban.</li>
+                                <li class="flex gap-3"><span class="text-red-400">•</span> <strong>Harassment:</strong> Targeted abuse or stalking is strictly prohibited.</li>
+                                <li class="flex gap-3"><span class="text-red-400">•</span> <strong>Explicit Content:</strong> No sexually explicit or gratuitously violent media.</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="bg-white/5 p-12 rounded-[3rem] border border-white/10">
+                        <h2 class="text-3xl font-bold mb-6 text-white">Enforcement & Reporting</h2>
+                        <p class="text-lg text-on-surface-variant mb-8">
+                            We use a combination of automated scanning (via our moderation engine) and manual community reports to keep FinishD safe.
+                        </p>
+                        <div class="space-y-6">
+                            <div class="flex gap-6 items-start">
+                                <div class="w-12 h-12 rounded-full bg-mint-400/20 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-mint-400">report</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">How to Report</h4>
+                                    <p class="text-sm text-on-surface-variant">Use the "Report" button on any video or chat message, or email us directly at support@finishd.com.</p>
+                                </div>
+                            </div>
+                            <div class="flex gap-6 items-start">
+                                <div class="w-12 h-12 rounded-full bg-mint-400/20 flex items-center justify-center shrink-0">
+                                    <span class="material-symbols-outlined text-mint-400">gavel</span>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold text-white mb-1">Consequences</h4>
+                                    <p class="text-sm text-on-surface-variant">Violations may result in content removal, temporary suspension, or permanent account termination without notice.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        `,
+        contact: `
+            <div class="max-w-3xl mx-auto">
+                <div class="text-center mb-16">
+                    <h1 class="text-5xl font-black mb-4 tracking-tight">Get in Touch</h1>
+                    <p class="text-xl text-on-surface-variant">Our team typically responds within 24 hours.</p>
+                </div>
+                <form class="space-y-8 glass-card p-12 rounded-[3rem]" onsubmit="event.preventDefault(); alert('Request submitted!'); window.location.hash = '';">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Full Name</label>
+                            <input type="text" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" required>
+                        </div>
+                        <div class="space-y-2">
+                            <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Email Address</label>
+                            <input type="email" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" required>
+                        </div>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Subject</label>
+                        <select class="w-full p-4 bg-surface-container-highest border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white">
+                            <option>Account Recovery</option>
+                            <option>Technical Support</option>
+                            <option>Feature Request</option>
+                            <option>Report a Bug</option>
+                            <option>Legal Inquiry</option>
+                        </select>
+                    </div>
+                    <div class="space-y-2">
+                        <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Message</label>
+                        <textarea rows="5" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" placeholder="Tell us what's going on..."></textarea>
+                    </div>
+                    <div class="space-y-4">
+                        <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Attachments</label>
+                        <div class="border-2 border-dashed border-white/10 rounded-[2rem] p-12 text-center hover:bg-white/5 transition-all cursor-pointer group" onclick="document.getElementById('file-input').click()">
+                            <span class="material-symbols-outlined text-4xl text-mint-400 mb-3 group-hover:scale-110 transition-transform">cloud_upload</span>
+                            <p id="file-label" class="text-on-surface-variant text-lg">Drag & drop screenshots or <span class="text-mint-400 font-bold">browse</span></p>
+                            <input type="file" class="hidden" id="file-input" onchange="document.getElementById('file-label').innerText = 'Selected: ' + this.files[0].name">
+                        </div>
+                    </div>
+                    <button type="submit" class="w-full bg-primary-container text-white font-black py-5 rounded-2xl hover:opacity-90 transition-all shadow-[0_0_40px_rgba(34,197,94,0.2)] text-lg uppercase tracking-widest">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        `,
+        terms: `
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-16 bg-mint-400/5 border border-mint-400/20 p-12 rounded-[3rem]">
+                    <h3 class="font-bold text-mint-400 uppercase tracking-[0.3em] text-xs mb-6">Terms Summary</h3>
+                    <ul class="text-lg space-y-4">
+                        <li class="flex items-start gap-4"><span class="text-mint-400 font-bold">01</span> <p><strong>You own your content</strong>, but you give us a license to show it on FinishD.</p></li>
+                        <li class="flex items-start gap-4"><span class="text-mint-400 font-bold">02</span> <p><strong>Age Requirement:</strong> You must be at least 13 years old to use this app.</p></li>
+                        <li class="flex items-start gap-4"><span class="text-mint-400 font-bold">03</span> <p><strong>Liability:</strong> We aggregate data from TMDB and YouTube; we aren't responsible for their content.</p></li>
+                    </ul>
+                </div>
+                
+                <h1 class="text-6xl font-black mb-4 tracking-tighter">Terms of Use</h1>
+                <p class="text-xl text-on-surface-variant mb-16">Effective Date: April 24, 2026</p>
+                
+                <div class="space-y-16 text-lg leading-relaxed text-on-surface-variant">
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">1. Agreement to Terms</h2>
+                        <p>By accessing or using FinishD, you agree to be bound by these Terms. If you do not agree, please do not use the app. We reserve the right to modify these terms at any time, and your continued use constitutes acceptance of those changes.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">2. User Accounts & Eligibility</h2>
+                        <p>You must be at least 13 years of age (or the minimum legal age in your country) to create an account. You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">3. User-Generated Content (UGC)</h2>
+                        <p>You retain all ownership rights to the content you post. However, by posting on FinishD, you grant us a worldwide, non-exclusive, royalty-free, sublicensable, and transferable license to use, reproduce, distribute, and display your content in connection with the service.</p>
+                        <div class="mt-6 bg-white/5 p-6 rounded-2xl border border-white/10 italic">
+                            You represent that you have all necessary rights to grant this license and that your content does not violate any third-party rights, including copyright.
+                        </div>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">4. Intellectual Property & Third-Party Services</h2>
+                        <p>FinishD aggregates metadata, posters, and trailers via the **TMDB API**, **OMDb API**, and **YouTube API**. These materials are the property of their respective owners. Your use of the video feed and trailers is also subject to the **YouTube Terms of Service**.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">5. DMCA Policy (Copyright)</h2>
+                        <p>If you believe that any content on FinishD infringes your copyright, please send a notice to our Copyright Agent at legal@finishd.com with:</p>
+                        <ul class="list-disc ml-8 mt-4 space-y-2">
+                            <li>Identification of the copyrighted work.</li>
+                            <li>Identification of the infringing material and its location in the app.</li>
+                            <li>Your contact information (address, phone, email).</li>
+                            <li>A statement of good faith belief and a statement under penalty of perjury regarding accuracy.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">6. Limitation of Liability</h2>
+                        <p>FINISHD IS PROVIDED "AS IS" WITHOUT WARRANTIES OF ANY KIND. IN NO EVENT SHALL THE DEVELOPERS BE LIABLE FOR ANY INDIRECT, INCIDENTAL, OR CONSEQUENTIAL DAMAGES ARISING OUT OF YOUR USE OF THE SERVICE.</p>
+                    </section>
+                </div>
+            </div>
+        `,
+        privacy: `
+            <div class="max-w-4xl mx-auto">
+                <div class="mb-16 bg-white/5 p-12 rounded-[3rem] border border-white/10">
+                    <h2 class="text-3xl font-bold mb-8 text-white">Privacy Essentials</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <span class="material-symbols-outlined text-mint-400 text-3xl">database</span>
+                            <h4 class="font-bold text-white">Secure Processing</h4>
+                            <p class="text-sm text-on-surface-variant">We use Supabase and Firebase for world-class data security and authentication.</p>
+                        </div>
+                        <div class="space-y-3">
+                            <span class="material-symbols-outlined text-mint-400 text-3xl">person_search</span>
+                            <h4 class="font-bold text-white">User Rights</h4>
+                            <p class="text-sm text-on-surface-variant">Full GDPR and CCPA compliance. You own your data; you can access or delete it anytime.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h1 class="text-6xl font-black mb-16 tracking-tighter">Privacy Policy</h1>
+                
+                <div class="space-y-16 text-lg leading-relaxed text-on-surface-variant">
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">1. Information We Collect</h2>
+                        <ul class="space-y-4">
+                            <li><strong>Account Data:</strong> Email, username, and authentication tokens via Google/Apple Sign-In.</li>
+                            <li><strong>Profile Info:</strong> Avatars, bios, and your public watch history.</li>
+                            <li><strong>UGC:</strong> Chat messages, custom lists, and video clips you upload (processed via Mux).</li>
+                            <li><strong>Usage Data:</strong> Analytics provided via Firebase, including screen views and interactions.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">2. How We Use Your Data</h2>
+                        <p>We use your information to provide personalized content discovery, enable social interactions, and send push notifications for trending content or new messages.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">3. Third-Party Data Sharing</h2>
+                        <p>We do not sell your personal data. We share information only with our core service providers:</p>
+                        <ul class="list-disc ml-8 mt-4 space-y-2">
+                            <li><strong>Supabase:</strong> Database and Auth infrastructure.</li>
+                            <li><strong>Firebase:</strong> Analytics and Push Notifications.</li>
+                            <li><strong>Mux:</strong> Video upload and streaming infrastructure.</li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">4. Your Rights (GDPR/CCPA)</h2>
+                        <p>Regardless of your location, we provide all users with the ability to:</p>
+                        <ul class="list-disc ml-8 mt-4 space-y-2">
+                            <li><strong>Access:</strong> Request a copy of your personal data.</li>
+                            <li><strong>Delete:</strong> Permanently remove your account and associated data.</li>
+                            <li><strong>Correct:</strong> Update inaccurate information in your profile.</li>
+                        </ul>
+                        <p class="mt-6">To exercise these rights, please contact us at support@finishd.com.</p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-3xl font-bold mb-6 text-white">5. Security</h2>
+                        <p>We implement industry-standard security measures, including data encryption and secure authentication via Supabase and Firebase, to protect your personal information.</p>
+                    </section>
+                </div>
+            </div>
+        `
+    };
+
+    function handleHashChange() {
+        const hash = window.location.hash.substring(1);
+        if (pageContent[hash]) {
+            openModal(hash);
+        } else {
+            closeModal();
+        }
+    }
+
+    function openModal(page) {
+        const modal = document.getElementById('screenModal');
+        const body = document.getElementById('modalBody');
+        body.innerHTML = pageContent[page] || '<p class="text-white text-center py-20">Content not found.</p>';
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        
+        // Ensure the modal body is scrolled to the top
+        document.querySelector('.modal-content').scrollTop = 0;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('screenModal');
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+        if (window.location.hash !== '') {
+            history.pushState("", document.title, window.location.pathname + window.location.search);
+        }
+    }
+
+    function toggleFaq(id) { 
+        const content = document.getElementById(id);
+        const icon = document.getElementById('icon-' + id);
+        content.classList.toggle('hidden');
+        icon.style.transform = content.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    window.addEventListener('hashchange', handleHashChange);
+    window.addEventListener('load', handleHashChange);
+
+    // Close on overlay click
+    document.getElementById('screenModal').addEventListener('click', function(e) {
+        // Only close if the click was on the direct container background of the modal-content
+        if (e.target === this) closeModal();
+    });
+</script>
+</body>
+</html>
