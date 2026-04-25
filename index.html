@@ -614,30 +614,31 @@
                     <h1 class="text-5xl font-black mb-4 tracking-tight">Get in Touch</h1>
                     <p class="text-xl text-on-surface-variant">Our team typically responds within 24 hours.</p>
                 </div>
-                <form class="space-y-8 glass-card p-12 rounded-[3rem]" onsubmit="event.preventDefault(); alert('Request submitted!'); window.location.hash = '';">
+                <form id="contactForm" class="space-y-8 glass-card p-12 rounded-[3rem]" onsubmit="event.preventDefault(); submitDeletion();">
                     <div class="grid md:grid-cols-2 gap-8">
                         <div class="space-y-2">
                             <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Full Name</label>
-                            <input type="text" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" required>
+                            <input type="text" id="name" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" required>
                         </div>
                         <div class="space-y-2">
                             <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Email Address</label>
-                            <input type="email" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" required>
+                            <input type="email" id="email" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" required>
                         </div>
                     </div>
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Subject</label>
-                        <select class="w-full p-4 bg-surface-container-highest border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white">
-                            <option>Account Recovery</option>
-                            <option>Technical Support</option>
-                            <option>Feature Request</option>
-                            <option>Report a Bug</option>
-                            <option>Legal Inquiry</option>
+                        <select id="subject" class="w-full p-4 bg-surface-container-highest border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white">
+                            <option value="Account Recovery">Account Recovery</option>
+                            <option value="Technical Support">Technical Support</option>
+                            <option value="Feature Request">Feature Request</option>
+                            <option value="Request deletion of my account">Request deletion of my account</option>
+                            <option value="Report a Bug">Report a Bug</option>
+                            <option value="Legal Inquiry">Legal Inquiry</option>
                         </select>
                     </div>
                     <div class="space-y-2">
                         <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Message</label>
-                        <textarea rows="5" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" placeholder="Tell us what's going on..."></textarea>
+                        <textarea id="message" rows="5" class="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-all" placeholder="Tell us what's going on..."></textarea>
                     </div>
                     <div class="space-y-4">
                         <label class="text-sm font-bold text-white/40 uppercase tracking-widest ml-1">Attachments</label>
@@ -819,6 +820,33 @@
         // Only close if the click was on the direct container background of the modal-content
         if (e.target === this) closeModal();
     });
+
+    function submitDeletion() {
+        const subject = document.getElementById('subject').value;
+        const message = document.getElementById('message').value;
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+
+        fetch("/functions/v1/store-deletion-request", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ subject, message, email, name }),
+        })
+        .then(response => {
+            if (response.ok) {
+                alert('Request submitted successfully!');
+                closeModal();
+            } else {
+                alert('There was an error submitting your request.');
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert('Could not reach the server. Please try again later.');
+        });
+    }
 </script>
 </body>
 </html>
