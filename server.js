@@ -32,6 +32,19 @@ const limiter = rateLimit({
   message: 'Too many requests from this IP, please try again later.'
 });
 app.use(limiter);
+app.use(express.json());
+
+// Handle deletion request submissions
+app.post('/functions/v1/store-deletion-request', (req, res) => {
+    const { name, email, subject, message } = req.body;
+    console.log('New Deletion Request Received:', { name, email, subject, message });
+    
+    // Simulate successful storage
+    res.status(200).json({ 
+        success: true, 
+        message: 'Your request has been received and will be processed by our legal team.' 
+    });
+});
 
 // Serve static portal files
 app.use(express.static(path.join(__dirname)));
