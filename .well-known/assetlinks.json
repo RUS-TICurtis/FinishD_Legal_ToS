@@ -1,0 +1,10 @@
+[{
+  "relation": ["delegate_permission/common.handle_all_urls"],
+  "target": {
+    "namespace": "android_app",
+    "package_name": "com.finishd",
+    "sha256_cert_fingerprints": [
+      "9B:6C:EE:DE:B8:A9:AC:7B:92:8D:7B:9E:82:88:CA:2F:A1:06:C9:9F:CA:90:49:D0:30:93:53:CB:81:87:DC:4D"
+    ]
+  }
+}]

@@ -46,8 +46,15 @@ app.post('/functions/v1/store-deletion-request', (req, res) => {
     });
 });
 
-// Serve static portal files
-app.use(express.static(path.join(__dirname)));
+// Serve static portal files, allowing dotfiles for deep linking (.well-known)
+app.use(express.static(path.join(__dirname), {
+  dotfiles: 'allow',
+  setHeaders: (res, filePath) => {
+    if (filePath.endsWith('apple-app-site-association')) {
+      res.setHeader('Content-Type', 'application/json');
+    }
+  }
+}));
 
 const PORT = process.env.PORT || 2230;
 app.listen(PORT, () => {
