@@ -46,17 +46,14 @@ app.post('/functions/v1/store-deletion-request', (req, res) => {
     });
 });
 
-// Serve static portal files, allowing dotfiles for deep linking (.well-known)
-app.use(express.static(path.join(__dirname), {
-  dotfiles: 'allow',
-  setHeaders: (res, filePath) => {
-    if (filePath.endsWith('apple-app-site-association')) {
-      res.setHeader('Content-Type', 'application/json');
-    }
-  }
-}));
+// Serve static portal files - Handled by Vite/Vercel in production
+// app.use(express.static(path.join(__dirname), { ... }));
 
 const PORT = process.env.PORT || 2230;
-app.listen(PORT, () => {
-  console.log(`FinishD Support Portal running at http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`FinishD Support Portal running at http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
