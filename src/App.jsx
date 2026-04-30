@@ -138,7 +138,6 @@ function App() {
                 <p className="text-on-surface-variant">Curated for your cinematic taste.</p>
               </div>
               <button className="text-primary font-bold flex items-center gap-2 hover:opacity-80">
-                View All <LucideChevronRight size={18} />
               </button>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
