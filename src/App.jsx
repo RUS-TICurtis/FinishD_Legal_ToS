@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { LucideBolt, LucideRocket, LucideApple, LucidePlay, LucideChevronRight, MessageCircle as LucideChatBubble, LucideRefreshCcw, LucideStar, LucideGlobe, LucideHeart, LucideShare2, LucideX, LucideUpload, LucideCheckCircle, LucideXCircle, LucideAlertCircle, LucideGavel, LucideShieldCheck } from 'lucide-react'
+import { LucideRocket, LucideChevronRight, LucideRefreshCcw, LucideGlobe, LucideHeart, LucideShare2, LucideX, LucideCheckCircle, LucideXCircle, LucideAlertCircle, LucideShieldCheck } from 'lucide-react'
 import { LEGAL_CONTENT } from './content/legal'
 
 // Mock Data / Content (Static UI strings)
@@ -12,12 +12,36 @@ const UI_CONTENT = {
       { id: "faq1", q: "How do I recover my account?", a: "Go to the login screen, select 'Forgot Password,' and follow the prompts sent to your registered email or phone number." },
       { id: "faq2", q: "What are badges and can I spend them?", a: "Badges are digital rewards for achieving your goals. Per our Terms, these have no real-world monetary value and cannot be redeemed for cash." }
     ]
-  }
+  },
+  homeFaqs: [
+    {
+      q: "How can I join the beta version of FinishD?",
+      a: "You can join our beta by entering your email in the 'Join the Waitlist' section at the bottom of this page. We're rolling out access in waves to ensure the best experience for everyone."
+    },
+    {
+      q: "Is FinishD available on both iOS and Android?",
+      a: "Yes! FinishD is designed for both platforms. While we're currently in beta, the full release will be available on both the Apple App Store and Google Play Store."
+    },
+    {
+      q: "Does FinishD cost anything to use?",
+      a: "The core social features of FinishD are completely free. We want to make sure everyone can join the conversation about their favorite films and shows."
+    },
+    {
+      q: "Can I sync FinishD with my favorite streaming services?",
+      a: "Absolutely. FinishD is designed to integrate with major streaming platforms, allowing you to react in real-time and sync your watch history seamlessly."
+    },
+    {
+      q: "How does the real-time discussion work?",
+      a: "FinishD uses 'Sync Points' to allow you and your friends to react at the exact same moment in a movie, creating a virtual theater experience no matter where you are."
+    }
+  ]
 }
 
 function App() {
   const [activeModal, setActiveModal] = useState(null)
   const [scrolled, setScrolled] = useState(false)
+  const [waitlistEmail, setWaitlistEmail] = useState('')
+  const [waitlistSubmitted, setWaitlistSubmitted] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20)
@@ -93,13 +117,23 @@ function App() {
                 The cinematic experience reimagined for the social age. Sync your streams, react in real-time, and join the global conversation on the films that matter.
               </p>
               <div className="flex flex-wrap gap-4 pt-4">
-                <button className="flex items-center gap-3 bg-white text-black px-8 py-4 rounded-xl font-bold hover:scale-105 transition-all">
-                  <LucideApple size={20} fill="currentColor" />
-                  App Store
+                <button className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl font-bold border border-white/20 hover:scale-105 transition-all shadow-lg shadow-black/50">
+                  <svg viewBox="0 0 384 512" className="w-6 h-6" fill="currentColor">
+                    <path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/>
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-[10px] uppercase leading-none font-medium opacity-70">Download on the</div>
+                    <div className="text-xl leading-none">App Store</div>
+                  </div>
                 </button>
-                <button className="flex items-center gap-3 glass-card text-white px-8 py-4 rounded-xl font-bold hover:bg-white/10 transition-all">
-                  <LucidePlay size={20} fill="currentColor" />
-                  Play Store
+                <button className="flex items-center gap-3 bg-black text-white px-6 py-3 rounded-xl font-bold border border-white/20 hover:scale-105 transition-all shadow-lg shadow-black/50">
+                  <svg viewBox="0 0 512 512" className="w-6 h-6" fill="currentColor">
+                    <path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-10.3 18-28.5-1.2-40.8zM325.3 277.7l60.1 60.1L104.6 499l220.7-221.3z"/>
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-[10px] uppercase leading-none font-medium opacity-70">GET IT ON</div>
+                    <div className="text-xl leading-none">Google Play</div>
+                  </div>
                 </button>
               </div>
             </div>
@@ -158,17 +192,56 @@ function App() {
           </div>
         </section>
 
+        {/* FAQ Section */}
+        <section className="px-8 py-24 bg-surface-container-lowest/30">
+          <div className="max-w-[1000px] mx-auto">
+            <h3 className="text-4xl font-bold text-white mb-12 text-center">Frequently Asked Questions</h3>
+            <div className="grid gap-6">
+              {UI_CONTENT.homeFaqs.map((faq, i) => (
+                <div key={i} className="glass-card p-8 rounded-3xl border border-white/10 hover:border-primary-container/30 transition-colors">
+                  <h4 className="text-xl font-bold text-white mb-4">{faq.q}</h4>
+                  <p className="text-on-surface-variant leading-relaxed">{faq.a}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* CTA Section */}
         <section className="px-8 py-32">
           <div className="max-w-[1100px] mx-auto rounded-[3rem] bg-gradient-to-br from-primary-container/20 to-secondary-container/20 border border-white/10 p-12 text-center relative overflow-hidden">
             <div className="absolute top-0 left-0 w-full h-full bg-black/40 backdrop-blur-[40px] -z-10"></div>
             <div className="relative z-10 space-y-8">
-              <h3 className="text-5xl md:text-6xl font-black text-white tracking-tighter">Ready for the Premiere?</h3>
-              <p className="text-on-surface-variant text-xl max-w-2xl mx-auto">Join 2M+ cinephiles today and start experiencing movies the way they were meant to be: together.</p>
-              <div className="flex flex-col sm:flex-row justify-center gap-6">
-                <button className="bg-primary-container text-white px-10 py-5 rounded-2xl font-bold text-lg hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all">Start Watching Now</button>
-                <button className="glass-card text-white px-10 py-5 rounded-2xl font-bold text-lg hover:bg-white/10 transition-all">Learn More</button>
-              </div>
+              <h3 className="text-5xl md:text-6xl font-black text-white tracking-tighter">Join the Waitlist</h3>
+              <p className="text-on-surface-variant text-xl max-w-2xl mx-auto">Get early access to the beta version and start experiencing movies the social way. Limited spots available.</p>
+
+              {!waitlistSubmitted ? (
+                <form
+                  onSubmit={(e) => {
+                    e.preventDefault();
+                    setWaitlistSubmitted(true);
+                  }}
+                  className="flex flex-col sm:flex-row justify-center gap-4 max-w-lg mx-auto"
+                >
+                  <input
+                    type="email"
+                    placeholder="Enter your email"
+                    required
+                    value={waitlistEmail}
+                    onChange={(e) => setWaitlistEmail(e.target.value)}
+                    className="flex-grow px-6 py-4 rounded-2xl bg-white/10 border border-white/20 text-white placeholder:text-white/40 focus:outline-none focus:ring-2 focus:ring-primary-container"
+                  />
+                  <button type="submit" className="bg-primary-container text-white px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all whitespace-nowrap">
+                    Join Beta
+                  </button>
+                </form>
+              ) : (
+                <div className="bg-primary-container/20 border border-primary-container/30 rounded-2xl p-8 max-w-lg mx-auto">
+                  <LucideCheckCircle className="mx-auto text-primary-container mb-4" size={48} />
+                  <h4 className="text-2xl font-bold text-white mb-2">You're on the list!</h4>
+                  <p className="text-white/70">Thank you for joining our waitlist. We'll notify you as soon as a spot opens up.</p>
+                </div>
+              )}
             </div>
           </div>
         </section>
