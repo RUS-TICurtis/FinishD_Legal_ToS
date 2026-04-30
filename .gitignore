@@ -3,3 +3,5 @@ legal_requirements_brief.md
 README.md
 .vercel
 node_modules
+dist
+*.log
