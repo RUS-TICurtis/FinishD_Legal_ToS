@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { LucideBolt, LucideRocket, LucideApple, LucidePlay, LucideChevronRight, LucideChatBubble, LucideRefreshCcw, LucideStar, LucideGlobe, LucideHeart, LucideShare2, LucideX, LucideUpload, LucideCheckCircle, LucideXCircle, LucideAlertCircle, LucideGavel, LucideShieldCheck } from 'lucide-react'
+import { LucideBolt, LucideRocket, LucideApple, LucidePlay, LucideChevronRight, MessageCircle as LucideChatBubble, LucideRefreshCcw, LucideStar, LucideGlobe, LucideHeart, LucideShare2, LucideX, LucideUpload, LucideCheckCircle, LucideXCircle, LucideAlertCircle, LucideGavel, LucideShieldCheck } from 'lucide-react'
 import { LEGAL_CONTENT } from './content/legal'
 
 // Mock Data / Content (Static UI strings)
@@ -46,12 +46,32 @@ function App() {
             </a>
           </div>
           <nav className="hidden md:flex items-center gap-8">
-            <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="font-bold text-mint-400 border-b-2 border-mint-400 py-1">Home</button>
-            <button onClick={() => openModal('help')} className="text-white/70 hover:text-white transition-colors">Help Center</button>
-            <button onClick={() => openModal('guidelines')} className="text-white/70 hover:text-white transition-colors">Guidelines</button>
-            <button onClick={() => openModal('contact')} className="text-white/70 hover:text-white transition-colors">Contact Us</button>
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="font-bold text-mint-400 border-b-2 border-mint-400 py-1 focus-visible:ring-2 focus-visible:ring-mint-400 outline-none rounded-sm"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => openModal('help')}
+              className="text-white/70 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-mint-400 outline-none rounded-sm px-1"
+            >
+              Help Center
+            </button>
+            <button
+              onClick={() => openModal('guidelines')}
+              className="text-white/70 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-mint-400 outline-none rounded-sm px-1"
+            >
+              Guidelines
+            </button>
+            <button
+              onClick={() => openModal('contact')}
+              className="text-white/70 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-mint-400 outline-none rounded-sm px-1"
+            >
+              Contact Us
+            </button>
           </nav>
-          <button className="bg-primary-container text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition-transform">Get App</button>
+          <button className="bg-primary-container text-white px-6 py-2 rounded-full font-bold hover:scale-105 transition-all focus-visible:ring-2 focus-visible:ring-mint-400 outline-none">Get App</button>
         </div>
       </header>
 
@@ -170,9 +190,15 @@ function App() {
             <button onClick={() => openModal('contact')} className="text-sm text-white/40 hover:text-mint-400">Contact Us</button>
           </div>
           <div className="flex gap-6">
-            <LucideGlobe className="text-white/40 hover:text-white cursor-pointer" size={20} />
-            <LucideHeart className="text-white/40 hover:text-white cursor-pointer" size={20} />
-            <LucideShare2 className="text-white/40 hover:text-white cursor-pointer" size={20} />
+            <button aria-label="Visit our website" className="text-white/40 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-mint-400 rounded outline-none">
+              <LucideGlobe size={20} aria-hidden="true" />
+            </button>
+            <button aria-label="Favorite" className="text-white/40 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-mint-400 rounded outline-none">
+              <LucideHeart size={20} aria-hidden="true" />
+            </button>
+            <button aria-label="Share" className="text-white/40 hover:text-white transition-colors focus-visible:ring-2 focus-visible:ring-mint-400 rounded outline-none">
+              <LucideShare2 size={20} aria-hidden="true" />
+            </button>
           </div>
         </div>
       </footer>
@@ -185,6 +211,9 @@ function App() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-2xl"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="modal-title"
           >
             <motion.div 
               initial={{ y: 50, opacity: 0 }}
@@ -195,8 +224,12 @@ function App() {
               <div className="w-full border-b border-white/5 sticky top-0 bg-black/50 backdrop-blur-3xl z-20">
                 <div className="max-w-[1440px] mx-auto px-8 py-6 flex justify-between items-center">
                   <img src="/Finishdlogo.png" alt="FinishD" className="h-8 w-auto" />
-                  <button onClick={closeModal} className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors">
-                    <LucideX className="text-white" />
+                  <button
+                    onClick={closeModal}
+                    aria-label="Close modal"
+                    className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center hover:bg-white/10 transition-colors focus-visible:ring-2 focus-visible:ring-mint-400 outline-none"
+                  >
+                    <LucideX className="text-white" aria-hidden="true" />
                   </button>
                 </div>
               </div>
@@ -205,7 +238,7 @@ function App() {
                 {activeModal === 'help' && (
                   <div className="space-y-12">
                     <div className="animated-hero-banner text-white py-16 px-8 rounded-[2rem] text-center shadow-2xl">
-                      <h1 className="text-5xl font-black mb-8 tracking-tighter">How can we help you?</h1>
+                      <h1 id="modal-title" className="text-5xl font-black mb-8 tracking-tighter">How can we help you?</h1>
                       <div className="max-w-xl mx-auto relative">
                         <input type="text" placeholder="Search for answers..." className="w-full p-5 rounded-2xl bg-white text-black focus:ring-4 focus:ring-mint-400/20 outline-none" />
                         <button className="absolute right-3 top-3 bg-mint-600 text-white px-6 py-2 rounded-xl font-bold">Search</button>
@@ -226,7 +259,7 @@ function App() {
                 {activeModal === 'guidelines' && (
                   <div className="space-y-16">
                     <div className="border-l-4 border-mint-500 pl-8">
-                      <h1 className="text-5xl font-black text-white mb-4 tracking-tighter">{LEGAL_CONTENT.guidelines.title}</h1>
+                      <h1 id="modal-title" className="text-5xl font-black text-white mb-4 tracking-tighter">{LEGAL_CONTENT.guidelines.title}</h1>
                       <p className="text-xl text-on-surface-variant">{LEGAL_CONTENT.guidelines.subtitle}</p>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -257,7 +290,13 @@ function App() {
                 )}
 
                 {activeModal === 'contact' && (
-                  <ContactForm />
+                  <div className="space-y-12">
+                    <div className="text-center">
+                      <h1 id="modal-title" className="text-5xl font-black text-white mb-4 tracking-tighter">Get in Touch</h1>
+                      <p className="text-xl text-on-surface-variant">Our team typically responds within 24 hours.</p>
+                    </div>
+                    <ContactForm hideTitle />
+                  </div>
                 )}
 
                 {(activeModal === 'privacy' || activeModal === 'terms') && (
@@ -267,7 +306,7 @@ function App() {
                         <LucideShieldCheck size={14} />
                         OFFICIAL POLICY
                       </div>
-                      <h1 className="text-6xl font-black text-white mb-4 tracking-tighter">
+                      <h1 id="modal-title" className="text-6xl font-black text-white mb-4 tracking-tighter">
                         {LEGAL_CONTENT[activeModal].title}
                       </h1>
                       <p className="text-on-surface-variant">Last Updated: {LEGAL_CONTENT[activeModal].lastUpdated}</p>
@@ -333,7 +372,7 @@ function App() {
   )
 }
 
-function ContactForm() {
+function ContactForm({ hideTitle = false }) {
   const [status, setStatus] = useState('idle') // idle, loading, success, error
   const [formData, setFormData] = useState({
     name: '',
@@ -367,15 +406,15 @@ function ContactForm() {
 
   if (status === 'success') {
     return (
-      <div className="max-w-3xl mx-auto text-center py-20 space-y-6">
+      <div role="status" aria-live="polite" className="max-w-3xl mx-auto text-center py-20 space-y-6">
         <div className="inline-flex items-center justify-center w-24 h-24 rounded-full bg-mint-500/20 text-mint-400 mb-4">
-          <LucideCheckCircle size={48} />
+          <LucideCheckCircle size={48} aria-hidden="true" />
         </div>
         <h2 className="text-4xl font-bold text-white">Message Sent!</h2>
         <p className="text-on-surface-variant text-lg">Thank you for reaching out. Our team will get back to you within 24 hours.</p>
         <button 
           onClick={() => setStatus('idle')}
-          className="text-mint-400 font-bold hover:underline"
+          className="text-mint-400 font-bold hover:underline focus-visible:ring-2 focus-visible:ring-mint-400 rounded outline-none"
         >
           Send another message
         </button>
@@ -385,14 +424,16 @@ function ContactForm() {
 
   return (
     <div className="max-w-3xl mx-auto space-y-12">
-      <div className="text-center">
-        <h1 className="text-5xl font-black text-white mb-4 tracking-tighter">Get in Touch</h1>
-        <p className="text-xl text-on-surface-variant">Our team typically responds within 24 hours.</p>
-      </div>
+      {!hideTitle && (
+        <div className="text-center">
+          <h1 className="text-5xl font-black text-white mb-4 tracking-tighter">Get in Touch</h1>
+          <p className="text-xl text-on-surface-variant">Our team typically responds within 24 hours.</p>
+        </div>
+      )}
       
       <form onSubmit={handleSubmit} className="space-y-8 glass-card p-8 md:p-12 rounded-[3rem]">
         {status === 'error' && (
-          <div className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-400">
+          <div role="alert" className="p-4 bg-red-500/10 border border-red-500/20 rounded-2xl flex items-center gap-3 text-red-400">
             <LucideAlertCircle size={20} />
             <p className="text-sm font-bold">Something went wrong. Please try again later.</p>
           </div>
@@ -400,34 +441,39 @@ function ContactForm() {
 
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-2">
-            <label className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Full Name</label>
+            <label htmlFor="name" className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Full Name</label>
             <input 
+              id="name"
               type="text" 
               value={formData.name}
               onChange={(e) => setFormData({...formData, name: e.target.value})}
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white" 
+              className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-shadow"
               required 
+              aria-required="true"
             />
           </div>
           <div className="space-y-2">
-            <label className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Email Address</label>
+            <label htmlFor="email" className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Email Address</label>
             <input 
+              id="email"
               type="email" 
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white" 
+              className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-shadow"
               required 
+              aria-required="true"
             />
           </div>
         </div>
         
         <div className="space-y-2">
-          <label className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Subject</label>
+          <label htmlFor="subject" className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Subject</label>
           <div className="relative">
             <select 
+              id="subject"
               value={formData.subject}
               onChange={(e) => setFormData({...formData, subject: e.target.value})}
-              className="w-full p-4 bg-surface-container-highest border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white appearance-none"
+              className="w-full p-4 bg-surface-container-highest border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white appearance-none transition-shadow"
             >
               <option>Account Recovery</option>
               <option>Technical Support</option>
@@ -441,14 +487,16 @@ function ContactForm() {
         </div>
 
         <div className="space-y-2">
-          <label className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Message</label>
+          <label htmlFor="message" className="text-xs font-bold text-white/40 uppercase tracking-widest ml-1">Message</label>
           <textarea 
+            id="message"
             rows="5" 
             value={formData.message}
             onChange={(e) => setFormData({...formData, message: e.target.value})}
-            className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white" 
+            className="w-full p-4 bg-white/5 border border-white/10 rounded-2xl focus:ring-2 focus:ring-mint-400 outline-none text-white transition-shadow"
             placeholder="Tell us what's going on..."
             required
+            aria-required="true"
           ></textarea>
         </div>
 
