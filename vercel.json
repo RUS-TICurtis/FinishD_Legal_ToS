@@ -5,6 +5,10 @@
     {
       "source": "/functions/v1/store-deletion-request",
       "destination": "/server.js"
+    },
+    {
+      "source": "/((?!.well-known/).*)",
+      "destination": "/index.html"
     }
   ],
   "headers": [
