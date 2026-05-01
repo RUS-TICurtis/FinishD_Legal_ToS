@@ -1,4 +1,11 @@
-## 2026-04-28 - [Modal & Form Accessibility Overhaul]
-**Learning:** Modern dark-mode interfaces often omit clear focus indicators for a "clean" look, which severely hinders keyboard accessibility. Additionally, custom-built modals often lack the necessary ARIA attributes to be identified as dialogs by screen readers.
-**Action:** Always ensure interactive elements have `focus-visible:ring-2` (using the theme's primary/accent color) and that modals use `role="dialog"`, `aria-modal="true"`, and `aria-labelledby`.
->>>>>>> REPLACE
+# UX Journal - Finishd Redesign
+
+## Accessibility Insights
+- Switched to a high-contrast light mode palette to improve readability for users with low vision.
+- Maintained a 60% opacity for secondary text to ensure sufficient contrast while distinguishing it from primary headings.
+- Interactive elements (buttons, links) use the brand's vibrant green with clear focus states (`focus-visible:ring-vibrant-green`).
+
+## Design Patterns
+- **Light Mode Glassmorphism**: Used `bg-white/40` with `backdrop-blur(20px)` for cards to create a sense of depth on light backgrounds without losing legibility.
+- **Color Blocking**: Utilized `deep-black` for high-impact structural elements (like footer buttons or app frames) to ground the otherwise light interface.
+- **Mesh Gradients**: Subtle radial gradients (`rgba(45, 214, 14, 0.08)`) provide a modern, energetic feel without being distracting.
