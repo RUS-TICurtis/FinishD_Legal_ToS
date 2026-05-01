@@ -62,7 +62,7 @@ function App() {
   return (
     <div className="min-h-screen bg-white text-deep-black selection:bg-vibrant-green selection:text-white mesh-gradient">
       {/* Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/80 backdrop-blur-xl border-soft-grey' : 'bg-transparent border-transparent'}`}>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/95 backdrop-blur-xl border-soft-grey' : 'bg-transparent border-transparent'}`}>
         <div className="max-w-[1440px] mx-auto px-8 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <a href="/" className="flex items-center">
@@ -156,7 +156,7 @@ function App() {
         <section className="px-8 py-12">
           <div className="max-w-[1440px] mx-auto flex flex-wrap justify-center gap-4">
             {['Sci-Fi Night', 'Indie Gems', 'Noir Rewind', 'Action Pulse', 'Docs & Reality'].map((cat, i) => (
-              <span key={i} className="px-6 py-2 rounded-full glass-card border-soft-grey text-deep-black/80 text-sm font-bold">
+              <span key={i} className="px-6 py-2 rounded-full bg-white border border-soft-grey text-deep-black text-sm font-bold">
                 {cat}
               </span>
             ))}
@@ -184,8 +184,28 @@ function App() {
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <p className="text-xs font-bold text-vibrant-green mb-1 uppercase tracking-wider">{card.tag}</p>
-                    <h4 className="text-xl font-bold text-deep-black">{card.title}</h4>
+                    <h4 className="text-xl font-bold text-white">{card.title}</h4>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* App Gallery Section */}
+        <section className="px-8 py-24 bg-white">
+          <div className="max-w-[1440px] mx-auto">
+            <div className="text-center mb-16 space-y-4">
+              <h3 className="text-5xl font-black text-deep-black tracking-tighter">App Gallery</h3>
+              <p className="text-xl text-deep-black/60 max-w-2xl mx-auto">Take a peek inside the FinishD experience.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {[1, 2, 3, 4].map((i) => (
+                <div key={i} className="aspect-[9/16] rounded-[2.5rem] bg-soft-grey border border-soft-grey overflow-hidden relative group">
+                  <div className="absolute inset-0 flex items-center justify-center text-deep-black/20 font-bold italic">
+                    Screenshot Placeholder {i}
+                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-b from-transparent to-deep-black/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
                 </div>
               ))}
             </div>
@@ -199,7 +219,7 @@ function App() {
             <div className="grid gap-6">
               {UI_CONTENT.homeFaqs.map((faq, i) => (
                 <div key={i} className="glass-card p-8 rounded-3xl border border-soft-grey hover:border-primary-container/30 transition-colors">
-                  <h4 className="text-xl font-bold text-deep-black mb-4">{faq.q}</h4>
+                  <h4 className="text-xl font-bold text-white mb-4">{faq.q}</h4>
                   <p className="text-deep-black/60 leading-relaxed">{faq.a}</p>
                 </div>
               ))}
@@ -229,7 +249,7 @@ function App() {
                     required
                     value={waitlistEmail}
                     onChange={(e) => setWaitlistEmail(e.target.value)}
-                    className="flex-grow px-6 py-4 rounded-2xl bg-soft-grey border border-deep-black/20 text-deep-black placeholder:text-deep-black/40 focus:outline-none focus:ring-2 focus:ring-primary-container"
+                    className="flex-grow bg-white px-6 py-4 rounded-2xl bg-soft-grey border border-deep-black/20 text-deep-black placeholder:text-deep-black/40 focus:outline-none focus:ring-2 focus:ring-primary-container"
                   />
                   <button type="submit" className="bg-vibrant-green text-deep-black px-8 py-4 rounded-2xl font-bold text-lg hover:shadow-[0_0_30px_rgba(34,197,94,0.4)] transition-all whitespace-nowrap">
                     Join Beta
@@ -248,31 +268,7 @@ function App() {
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-soft-grey pt-16 pb-8 bg-deep-black">
-        <div className="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-8">
-          <div className="flex flex-col gap-4">
-            <img src="/Finishdlogo.png" alt="FinishD" className="h-8 w-auto opacity-70" />
-            <p className="text-sm text-deep-black/40">© 2026 FinishD. Built for the fast.</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8">
-            <button onClick={() => openModal('privacy')} className="text-sm text-deep-black/40 hover:text-vibrant-green">Privacy</button>
-            <button onClick={() => openModal('terms')} className="text-sm text-deep-black/40 hover:text-vibrant-green">Terms of Use</button>
-            <button onClick={() => openModal('guidelines')} className="text-sm text-deep-black/40 hover:text-vibrant-green">Guidelines</button>
-            <button onClick={() => openModal('contact')} className="text-sm text-deep-black/40 hover:text-vibrant-green">Contact Us</button>
-          </div>
-          <div className="flex gap-6">
-            <button aria-label="Visit our website" className="text-deep-black/40 hover:text-deep-black transition-colors focus-visible:ring-2 focus-visible:ring-vibrant-green rounded outline-none">
-              <LucideGlobe size={20} aria-hidden="true" />
-            </button>
-            <button aria-label="Favorite" className="text-deep-black/40 hover:text-deep-black transition-colors focus-visible:ring-2 focus-visible:ring-vibrant-green rounded outline-none">
-              <LucideHeart size={20} aria-hidden="true" />
-            </button>
-            <button aria-label="Share" className="text-deep-black/40 hover:text-deep-black transition-colors focus-visible:ring-2 focus-visible:ring-vibrant-green rounded outline-none">
-              <LucideShare2 size={20} aria-hidden="true" />
-            </button>
-          </div>
-        </div>
-      </footer>
+      <Footer openModal={openModal} />
 
       {/* Modal */}
       <AnimatePresence>
@@ -281,7 +277,7 @@ function App() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-deep-black/95 backdrop-blur-2xl"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-deep-black"
             role="dialog"
             aria-modal="true"
             aria-labelledby="modal-title"
@@ -292,8 +288,8 @@ function App() {
               exit={{ y: 50, opacity: 0 }}
               className="w-full h-full overflow-y-auto flex flex-col"
             >
-              <div className="w-full border-b border-white/5 sticky top-0 bg-deep-black/50 backdrop-blur-3xl z-20">
-                <div className="max-w-[1440px] mx-auto px-8 py-6 flex justify-between items-center">
+              <div className="w-full border-b border-white/5 sticky top-0 bg-deep-black z-20">
+                <div className="max-w-[1440px] mx-auto px-8 py-8 flex justify-between items-center">
                   <img src="/Finishdlogo.png" alt="FinishD" className="h-8 w-auto" />
                   <button
                     onClick={closeModal}
@@ -305,7 +301,7 @@ function App() {
                 </div>
               </div>
 
-              <div className="w-full max-w-4xl mx-auto p-8 md:p-20 flex-grow">
+              <div className="w-full max-w-4xl mx-auto p-8 md:p-20 flex-grow bg-white">
                 {activeModal === 'help' && (
                   <div className="space-y-12">
                     <div className="animated-hero-banner text-deep-black py-16 px-8 rounded-[2rem] text-center shadow-2xl">
@@ -435,6 +431,7 @@ function App() {
                   </div>
                 )}
               </div>
+              <Footer openModal={openModal} />
             </motion.div>
           </motion.div>
         )}
@@ -589,3 +586,33 @@ function ContactForm({ hideTitle = false }) {
 }
 
 export default App
+
+function Footer({ openModal }) {
+  return (
+    <footer className="w-full border-t border-soft-grey pt-20 pb-12 bg-gradient-to-b from-[#18181F] to-[#121217]">
+      <div className="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-12">
+        <div className="flex flex-col gap-6 items-center md:items-start">
+          <img src="/Finishdlogo.png" alt="FinishD" className="h-10 w-auto opacity-90" />
+          <p className="text-base text-soft-grey/60">© 2026 FinishD. Built for the fast.</p>
+        </div>
+        <div className="flex flex-wrap justify-center gap-10">
+          <button onClick={() => openModal('privacy')} className="text-base text-soft-grey/60 hover:text-vibrant-green transition-colors">Privacy</button>
+          <button onClick={() => openModal('terms')} className="text-base text-soft-grey/60 hover:text-vibrant-green transition-colors">Terms of Use</button>
+          <button onClick={() => openModal('guidelines')} className="text-base text-soft-grey/60 hover:text-vibrant-green transition-colors">Guidelines</button>
+          <button onClick={() => openModal('contact')} className="text-base text-soft-grey/60 hover:text-vibrant-green transition-colors">Contact Us</button>
+        </div>
+        <div className="flex gap-8">
+          <button aria-label="Visit our website" className="text-soft-grey/60 hover:text-vibrant-green transition-colors focus-visible:ring-2 focus-visible:ring-vibrant-green rounded outline-none p-2">
+            <LucideGlobe size={24} aria-hidden="true" />
+          </button>
+          <button aria-label="Favorite" className="text-soft-grey/60 hover:text-vibrant-green transition-colors focus-visible:ring-2 focus-visible:ring-vibrant-green rounded outline-none p-2">
+            <LucideHeart size={24} aria-hidden="true" />
+          </button>
+          <button aria-label="Share" className="text-soft-grey/60 hover:text-vibrant-green transition-colors focus-visible:ring-2 focus-visible:ring-vibrant-green rounded outline-none p-2">
+            <LucideShare2 size={24} aria-hidden="true" />
+          </button>
+        </div>
+      </div>
+    </footer>
+  )
+}
