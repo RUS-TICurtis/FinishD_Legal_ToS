@@ -17,3 +17,8 @@
 
 ## Refinement
 - **Footer Depth**: Transitioned the footer from a solid black to a subtle gradient (`from-[#18181F] to-[#121217]`) to reduce the "black brick" appearance while maintaining a premium dark feel.
+
+## Contrast Fixes (May 2026)
+- Standardized FAQ text to use `text-deep-black` (#0B0B0F) for maximum readability on white backgrounds.
+- Implemented a dynamic header class in `src/App.jsx` to toggle between light/dark text based on page scroll and route, preventing white-on-white text in the top navigation.
+- Audit of legal and help pages revealed pervasive `text-white` usage on `bg-surface` (#FFFFFF); shifted all primary and secondary text to the dark palette.
