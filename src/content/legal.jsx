@@ -3,65 +3,84 @@ export const LEGAL_CONTENT = {
     title: "Privacy Policy",
     lastUpdated: "April 28, 2026",
     atAGlance: [
-      "We do NOT track you across third-party apps.",
-      "Data collection is focused on core app functionality.",
-      "You have full control over your data and account deletion."
+      "We collect account info, content you create, and usage data.",
+      "We use AI tools for automated content moderation to ensure safety.",
+      "You have the right to access and delete your data at any time."
     ],
     sections: [
       {
         title: "1. Information We Collect",
-        content: `We collect information you provide directly to us, information automatically collected when you use our Service, and information from third-party partners.
+        content: `We collect information you provide directly to us, information automatically collected when you use our Service, and information from third parties.
 
-### A. Contact Information
-When you create an account, we collect your email address, username, display name, and optional profile details (first name, last name, bio). This is used for authentication and personalizing your experience.
+A. Information You Provide to Us
+• Account Information: When you create an account, we collect your email address, username, first name, last name, profile picture, and bio.
+• Authentication Data: We support sign-in via third-party providers (Apple, Google) and email/password. We do not store your passwords for third-party providers.
+• User-Generated Content: We collect the content you create, upload, or send, including chat messages, community posts, comments, short videos, GIFs, and images.
+• Library & Preferences: We store your tracked movies and TV shows (e.g., "watching," "watchlist," "finished," "favorites").
 
-### B. Identifiers
-We assign a unique User ID (UUID) to your account and store Device Identifiers (FCM tokens) to enable secure sessions and push notifications.
+B. Information Automatically Collected
+• Analytics & Usage Data: We log how you interact with the Service, such as the screens you view, buttons you click, watch time for videos, and your scroll depth (e.g., via analytics_events).
+• Device & Connection Information: We collect push notification tokens (Firebase Cloud Messaging/APNs) to send you updates.
+• Moderation Data: If you report content or users, or if your content is reported, we collect the details of the report, the status of the review, and any subsequent enforcement actions.
 
-### C. User Content
-We collect and store the content you create, including:
-• Videos uploaded to the creator feed.
-• Private messages exchanged in chat.
-• Movie/TV show ratings and community posts.
-• Customer support requests and reports.
-
-### D. Usage Data & Analytics
-We automatically collect information about how you interact with FinishD, including:
-• Product Interactions (app launches, taps, video watch time, and scroll depth).
-• Search history within the app.
-• Diagnostic data (crash logs and performance metrics).
-
-### E. Social Graph
-We maintain records of who you follow, who follows you, and users you have blocked to ensure a safe and personalized social experience.`
+C. Inferred & Generated Data
+• Recommendations: Based on your viewing history and social graph, we generate personalized recommendations for movies, TV shows, and creator content feeds.
+• Creator Stats: For users uploading videos, we generate aggregated statistics (e.g., daily views, watch time, new followers).`
       },
       {
-        title: "2. How We Use Your Data",
-        content: `Your information is used for the following purposes:
-
-• **App Functionality:** To authenticate your identity, enable messaging, and provide tracking tools for your movie/TV show library.
-• **Product Personalization:** To generate your "For You" feed and suggest content you might enjoy.
-• **Analytics:** To understand app performance and fix technical issues.
-• **Safety & Moderation:** We use automated tools (including AI-driven moderation) to review content for violations of our Community Guidelines.`
+        title: "2. How We Use Information",
+        content: `We use the collected information for the following purposes:
+• To Provide the Service: Authenticating users, storing your watch lists, displaying your profile, and facilitating chat and community interactions.
+• To Personalize Your Experience: Powering the algorithmic recommendations for your personalized feed and discovery sections.
+• To Improve Our Service: Analyzing usage data (e.g., tracking screen time) to understand how the app is used and to fix bugs.
+• For Safety and Security: Moderating content (using both human review and automated AI moderation tools) to enforce our Terms of Use, investigating reports, and preventing spam or abusive behavior.
+• To Communicate with You: Sending push notifications regarding chat messages, community updates, or moderation warnings.`
       },
       {
-        title: "3. Tracking & Advertising",
-        content: `FinishD is committed to user privacy. 
-
-• **No Tracking:** We do NOT track you. We do not link data collected from our app with third-party data for targeted advertising purposes.
-• **No Data Brokers:** We do not share your personal information with data brokers.
-• **No Third-Party Ads:** We do not display third-party advertisements in the FinishD app.`
+        title: "3. How We Share Information",
+        content: `We do not sell your personal data. We only share information in the following circumstances:
+• With Other Users: Your public profile (username, bio, profile picture) and any public content you post (community posts, creator videos, comments) are visible to other users.
+• With Service Providers: We share data with trusted third-party vendors who assist us in operating our Service (e.g., Supabase for database hosting, Firebase for notifications, OpenAI for content moderation).
+• For Legal Reasons: We may disclose your information if required to do so by law, to enforce our Terms of Use, or to protect the rights, property, or safety of Finishd, our users, or the public.`
       },
       {
-        title: "4. Third-Party Partners",
-        content: `We integrate with several trusted partners to provide our service:
-• **Supabase:** Secure database and authentication hosting.
-• **Firebase:** Reliable push notification infrastructure.
-• **OpenAI:** Advanced content moderation to keep the community safe.
-• **TMDB/YouTube:** Providing entertainment metadata and trailer playback.`
+        title: "4. Third-Party Services",
+        content: `The Service integrates with third-party APIs to provide rich entertainment metadata and video playback. These services may collect their own data based on your interactions:
+• TMDB & OMDb: Used to fetch movie/TV show metadata, cast information, and ratings.
+• YouTube: Used for trailer playback and video extraction. By using these features, you are subject to the YouTube Terms of Service and Google Privacy Policy.
+• Streaming Providers: We provide deep links to third-party streaming platforms (e.g., Netflix, Hulu, Watchmode). Clicking these links takes you out of Finishd and into those third-party environments. We are not responsible for their privacy practices.`
       },
       {
-        title: "5. Your Rights & Data Deletion",
-        content: `You have the right to access, update, or delete your data at any time. You can request full account deletion directly through the app settings or by contacting us at support@finishd.app. Once requested, all personally identifiable information will be purged from our active systems.`
+        title: "5. Data Security",
+        content: `We implement reasonable security measures to protect your personal information, including utilizing secure backend infrastructure (Supabase) and Row Level Security (RLS) policies to ensure that private data (like chat messages and watchlists) is only accessible to authorized users.`
+      },
+      {
+        title: "6. Data Retention",
+        content: `We retain your personal information for as long as your account is active or as needed to provide you the Service.
+• User Content: Your posts, messages, and library data are retained until you delete them or your account.
+• Analytics: Analytics events may be aggregated or anonymized over time.
+• Moderation Logs: Records of banned accounts and blocked content are retained indefinitely for security and safety purposes.`
+      },
+      {
+        title: "7. User Rights & Controls",
+        content: `Depending on your jurisdiction (such as under GDPR or CCPA), you have certain rights regarding your data:
+• Access & Correction: You can view and edit your profile information and library data directly within the app.
+• Deletion: You can delete your account at any time using the "Delete Account" option in the settings menu. Deleting your account will permanently remove your profile and personal data from active databases (via the delete-account edge function).
+• Notifications: You can opt out of push notifications via your device settings.
+• Note on Export: Currently, Finishd does not feature an automated "Export Data" button within the app. To request a copy of your data, please contact us.`
+      },
+      {
+        title: "8. Children’s Privacy",
+        content: `Finishd is not intended for children under the age of 13 (or 16 in certain jurisdictions). We do not knowingly collect personal information from children under these ages. If we become aware that we have collected personal data from a child without parental consent, we will take steps to remove that information and terminate the account.`
+      },
+      {
+        title: "9. Changes to This Policy",
+        content: `We may update this Privacy Policy from time to time. If we make significant changes, we will notify you through the Service or by other means so you have the opportunity to review the changes before they become effective.`
+      },
+      {
+        title: "10. Contact Information",
+        content: `If you have questions or concerns about this Privacy Policy, please contact us at:
+Email: support@finishd.app`
       }
     ]
   },
