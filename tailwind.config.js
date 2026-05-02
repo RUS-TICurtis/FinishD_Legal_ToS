@@ -11,11 +11,6 @@ export default {
               "vibrant-green": "#2DD60E",
               "deep-black": "#0B0B0F",
               "soft-grey": "#F2F2F2",
-              "primary": "#2DD60E",
-              "on-primary": "#0B0B0F",
-              "surface": "#FFFFFF",
-              "on-surface": "#0B0B0F",
-              /* Previous Theme
               "mint": { "400": "#4ade80", "500": "#22c55e", "600": "#16a34a" },
               "inverse-surface": "#e5e2e3",
               "secondary-container": "#16a34a",
@@ -64,7 +59,6 @@ export default {
               "surface-container-low": "#1c1b1c",
               "inverse-on-surface": "#313031",
               "on-surface-variant": "#d5c0d7"
-              */
       },
       "borderRadius": {
               "DEFAULT": "0.25rem",
