@@ -56,24 +56,22 @@ function Layout({ children }) {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const isDarkHeader = scrolled || pathname !== '/'
+  const isScrolled = scrolled || pathname !== '/'
   const navLinkClass = (path) => {
     const isActive = pathname === path
     if (isActive) return 'text-vibrant-green border-b-2 border-vibrant-green'
-    return isDarkHeader
-      ? 'text-white/70 hover:text-white'
-      : 'text-deep-black/70 hover:text-deep-black'
+    return 'text-deep-black/70 hover:text-deep-black'
   }
 
   return (
     <div className="min-h-screen bg-surface text-on-surface selection:bg-vibrant-green/30 selection:text-deep-black mesh-gradient">
       <ScrollToTop />
       {/* Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${isDarkHeader ? 'bg-black/80 backdrop-blur-xl border-white/10' : 'bg-transparent border-transparent'}`}>
+      <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${isScrolled ? 'bg-white/95 backdrop-blur-xl border-soft-grey' : 'bg-transparent border-transparent'}`}>
         <div className="max-w-[1440px] mx-auto px-8 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
             <Link to="/" className="flex items-center">
-              <img src="/Finishdlogo.png" alt="FinishD" className={`h-10 w-auto transition-all ${!isDarkHeader ? 'brightness-0' : ''}`} />
+              <img src="/Finishdlogo.png" alt="FinishD" className="h-10 w-auto transition-all" />
             </Link>
           </div>
           <nav className="hidden md:flex items-center gap-8">

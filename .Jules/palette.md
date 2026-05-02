@@ -22,3 +22,7 @@
 - Standardized FAQ text to use `text-deep-black` (#0B0B0F) for maximum readability on white backgrounds.
 - Implemented a dynamic header class in `src/App.jsx` to toggle between light/dark text based on page scroll and route, preventing white-on-white text in the top navigation.
 - Audit of legal and help pages revealed pervasive `text-white` usage on `bg-surface` (#FFFFFF); shifted all primary and secondary text to the dark palette.
+
+## Reversions (May 2026)
+- **Header Theme Reversion**: Undid the dark header transition. The header now remains light (bg-white/95) even when scrolled, ensuring consistency with the overall light mode design.
+- **Logo Clarity**: Removed the 'brightness-0' filter from the logo. The logo now retains its original colors on both transparent and white backgrounds, avoiding the solid black appearance at the top of the page.
